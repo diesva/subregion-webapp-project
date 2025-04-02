@@ -19,5 +19,15 @@ export const AuthContextProvider =({children})=>{
         return () => {
             authListener.subscription;
         } 
-    })
+    },[])
+
+    return (
+        <AuthContext.Provider value={{user}}>
+            {children}
+        </AuthContext.Provider>  
+        
+    )
+}
+export const UserAuth = ()=>{
+    return useContext(AuthContext)
 }
