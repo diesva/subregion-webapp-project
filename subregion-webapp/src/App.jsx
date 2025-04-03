@@ -21,7 +21,7 @@ function App() {
         <AuthContextProvider>
           <Container className={sidebarOpen?"active":""}>
             <section className="ContentSidebar">
-              sidebar 
+              <Sidebar state={sidebarOpen} setState={()=>setSidebarOpen(!sidebarOpen)} />
             </section>
             <section className="ContentMenuambur">
               menu amburguerza
