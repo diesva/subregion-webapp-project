@@ -10,8 +10,12 @@ export function HomeTemplate() {
 
 // 🔹 Define el Container aquí
 const Container = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background-color:${(props)=>props.theme.bgtotal};
+    color: ${({theme})=>theme.text};
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
 `;

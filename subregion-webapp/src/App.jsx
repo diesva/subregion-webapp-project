@@ -1,20 +1,72 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 import { AuthContextProvider } from './context/AuthContext' 
 import { MyRoutes } from './routers/routes'
+import styled, {ThemeProvider} from 'styled-components';
+import { createContext } from 'react';
+import {Device} from "./styles/breackpoints";
+import {Light, Dark } from './styles/themes';
+import { Sidebar } from './components/organismos/sidebar/Sidebar';
+export const ThemeContext = createContext (null);
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [themeuse, setTheme] = useState("dark");
+  const theme = themeuse === "light" ? "light" : "dark";
+  const themeStyle = theme==="light"?Light:Dark
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
-    <>
-    <AuthContextProvider>
-      <MyRoutes />
-    </AuthContextProvider>
-    </>
-  )
+  <>
+    <ThemeContext.Provider value={{theme,setTheme}}>
+      <ThemeProvider theme={themeStyle}>
+        <AuthContextProvider>
+          <Container className={sidebarOpen?"active":""}>
+            <section className="ContentSidebar">
+              sidebar 
+            </section>
+            <section className="ContentMenuambur">
+              menu amburguerza
+            </section>
+            <section className="ContentRoutes">
+            <MyRoutes />
+            </section>
+          </Container>
+        </AuthContextProvider>
+      </ThemeProvider>
+    </ThemeContext.Provider>
+  </>
+  );
+} 
+const Container = styled.main`
+  display:grid;
+  grid-template-columns: 1fr;
+  background-color: ${({theme})=>theme.bgtotal};
+  .ContentSidebar{
+    display:none;
+  }  
+  .ContentMenuambur{
+    display: block;
+    position: absolute;
+    left: 20px; 
+  }
+@media ${Device.tablet} {
+  grid-template-columns: 65px 1fr;
+  &.active{
+    grip-template-columns: 220pm 1fr; 
+  }
+  .ContentSidebar{
+    display: initial;
+  }
+  .ContentMenuambur { 
+    display: none;
+  }
+  .ContentRoutes{
+    grid-column: 1;
+    width: 100%;
+    @media ${Device.tablet}{
+      grid-column: 2;
+    }
+  }
 }
+  `;
 
 export default App;
