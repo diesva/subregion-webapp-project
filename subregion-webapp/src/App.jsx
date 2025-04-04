@@ -6,6 +6,8 @@ import { createContext } from 'react';
 import {Device} from "./styles/breackpoints";
 import {Light, Dark } from './styles/themes';
 import { Sidebar } from './components/organismos/sidebar/Sidebar';
+import { MenuHambur } from './components/organismos/MenuHambur/';
+
 export const ThemeContext = createContext (null);
 
 
@@ -23,8 +25,7 @@ function App() {
             <section className="ContentSidebar">
               <Sidebar state={sidebarOpen} setState={()=>setSidebarOpen(!sidebarOpen)} />
             </section>
-            <section className="ContentMenuambur">
-              menu amburguerza
+            <section className="ContentMenuambur"><MenuHambur />
             </section>
             <section className="ContentRoutes">
             <MyRoutes />
@@ -58,6 +59,8 @@ const Container = styled.main`
   }
   .ContentMenuambur { 
     display: none;
+    position: absolute;
+    left: 20px;
   }
   .ContentRoutes{
     grid-column: 1;
