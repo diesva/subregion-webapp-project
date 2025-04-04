@@ -15,7 +15,7 @@ export function MenuHambur(){
         <HamburgerMenu onClick={()=>setClick(!click)}>
          
         
-        <label className={click?"toggle active":"togglee"}
+        <label className={click ? "toggle active" : "toggle" }
             for="checkbox">
             <div class="bars" id="bar1"></div>
             <div class="bars" id="bar2"></div>
@@ -75,7 +75,7 @@ const NavBar =styled.div`
     height: 100vh;
 `;
 const HamburgerMenu =styled.span`
-    /* From Uiverse.io by vinodjangid07 */
+
 position: fixed;
 top: 2rem;
 z-index: 100;
@@ -101,8 +101,10 @@ z-index: 100;
   transform: rotate(180deg);
 
   .bars {
+
   position: absolute;
   transition-duration: .5s;
+
     }
    #bar2 {
   transform: scaleX(0);
@@ -127,7 +129,8 @@ z-index: 100;
 .bars {
   width: 100%;
   height: 4px;
-  background-color: rgb(176, 92, 255);
+  
+  background-color:${({theme})=>theme.text};
   border-radius: 4px;
 }
 
@@ -142,10 +145,44 @@ z-index: 100;
 `;
 const Menu = styled.div`
     display: flex;
-    justify-conent: space-between;
     align-items: center;
-        list-style: none;
-        z-index: 10;
+    list-style: none;
+    z-index: 10;
+    flex-direction: column;
+    position: fixed;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    background-color: ${(props)=> `rgba(${props.theme.bodyRgba},0.85)`};
+    backdrop-filter: blur(3px);
+
+    transform: ${(props)=> props.$click == "true" ? "translateY(0)": "translateY(100%)"};
+    transition: all 0.3s ease;
+
+    .LinkContainer{
+        &:hover{
+        background: ${(props)=> props.theme.bgAlpha};
+        }
+        .Links{
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: ${(props)=> props.theme.text };
+            height: 80px;
+            .Linkicon{
+            padding: ${v.smSpacing} ${v.mdSpacing};
+            display: flex;
+            svg{
+            font-size: 25px;
+            }
+            }
+        }
+    }
+    
 `;
 const Divider = styled.div`
   height: 1px;
