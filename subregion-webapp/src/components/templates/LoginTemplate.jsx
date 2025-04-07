@@ -4,6 +4,7 @@ import {useUsuariosStore} from "../../store/UsuarioStore";
 import {useMutation} from "@tanstack/react-query";
 
 export function LoginTemplate() {
+    const {insertarUsuarioAdmin} = useUsuariosStore(); 
     const mutation = useMutation({
         mutationKey:["Insertar usuario Admin"], mutationFn:async()=>{
             await insertarUsuarioAdmin()
