@@ -1,6 +1,7 @@
-import { useState } from 'react'
-import { AuthContextProvider } from './context/AuthContext' 
-import { MyRoutes } from './routers/routes'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { useState } from 'react';
+import { AuthContextProvider } from './context/AuthContext'; 
+import { MyRoutes } from './routers/routes';
 import styled, {ThemeProvider} from 'styled-components';
 import { createContext } from 'react';
 import {Device} from "./styles/breackpoints";
@@ -8,8 +9,8 @@ import {Light, Dark } from './styles/themes';
 import { Sidebar } from './components/organismos/sidebar/Sidebar';
 import { MenuHambur } from './components/organismos/MenuHambur/';
 
-export const ThemeContext = createContext (null);
 
+export const ThemeContext = createContext (null);
 
 function App() {
   const [themeuse, setTheme] = useState("dark");
@@ -31,6 +32,7 @@ function App() {
             <MyRoutes />
             </section>
           </Container>
+          <ReactQueryDevtools initialIsOpen={false} />
         </AuthContextProvider>
       </ThemeProvider>
     </ThemeContext.Provider>
