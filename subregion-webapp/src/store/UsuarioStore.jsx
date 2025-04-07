@@ -8,9 +8,8 @@ export const useUsuariosStore = create((set, get) => ({
       password: p.pass
     });
     console.log("data del registro del usuario: ", data);
-    if (error) return null;
-    await InsertarUsuarios({idauth:data.user.id,fecharegistro:new Date(),tipouser:"admin"})
-
-
-  }
+    if (error) return;
+    const datauser = await InsertarUsuarios({idauth: data.user.id, fecharegistro:new Date(), tipouser:"admin",});
+    return datauser;
+  },
 }));
