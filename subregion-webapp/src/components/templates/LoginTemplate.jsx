@@ -21,7 +21,8 @@ export function LoginTemplate() {
     })
 
     return (<Container> 
-    <Btnsave titulo="Crear cuenta" bgcolor="#fff" function = {mutationInserUser.mutateAsync}/>
+    <Btnsave titulo="Crear cuenta" bgcolor="#fff" funcion = {mutationInserUser.mutateAsync} 
+    />
     </Container>);
     
 }
