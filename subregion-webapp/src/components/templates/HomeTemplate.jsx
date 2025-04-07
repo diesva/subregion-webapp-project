@@ -1,9 +1,12 @@
 import styled from "styled-components";
-
+import {Btnsave} from "../moleculas/Btnsave";
+import {useAuthStore} from "../../store/AuthStore"
 export function HomeTemplate() {
+    const {signOut} = useAuthStore();
     return (
         <Container>
             <h1>UPLOAD SERVER - SUB REGION ILO</h1>
+            <Btnsave titulo="Cerrar sesion" bgcolor="fff" funcion={signOut}/>
         </Container>
     );
 }
