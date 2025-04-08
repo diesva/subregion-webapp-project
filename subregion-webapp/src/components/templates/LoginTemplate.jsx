@@ -13,6 +13,7 @@ import { ThemeContext } from "../../App";
 import { useEffect } from "react";
 import { InputText } from "../organismos/formularios/InputText";
 import { FooterLogin } from "../organismos/sidebar/FooterLogin";
+import { RegistrarAdmin } from "../organismos/formularios/RegistrarAdmin";
 
 export function LoginTemplate() {
     const { setTheme } = useContext(ThemeContext);
@@ -33,8 +34,10 @@ export function LoginTemplate() {
     const response = await signInWithEmail({
       correo: data.correo,
       pass: data.pass,
-    });
-    if (response) {
+    }); 
+    console.log("🔐 Response de login:", response);
+
+    if (response?.data?.session?.access_token) {
       navigate("/");
     } else {
       setStateInicio(true);
@@ -53,6 +56,9 @@ export function LoginTemplate() {
 
       <div className="contentCard">
         <div className="card">
+          {
+            state && <RegistrarAdmin setState={()=>setState(!state)}/>
+          }
           <Titulo>Almacen Ilo</Titulo>
           {stateInicio && (
             <TextoStateInicio>datos incorrectos</TextoStateInicio>

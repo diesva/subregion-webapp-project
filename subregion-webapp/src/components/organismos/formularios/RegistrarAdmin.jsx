@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { v } from "../../../styles/variables";
 import { InputText } from "./InputText";
 import { Btnsave } from "../../moleculas/Btnsave";
-import { useUsuariosStore} from "../../../store/UsuarioStore"
+import {useUsuariosStore} from "../../../store/UsuarioStore"
 import { useForm } from "react-hook-form";
 import { MdAlternateEmail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";

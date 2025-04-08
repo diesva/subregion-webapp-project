@@ -7,9 +7,9 @@ export function MyRoutes() {
     const {user} = UserAuth()
     return(
         <Routes>
-            <Route path="https://subregion-webapp-project-77gu-in6o1rupc-diesvas-projects.vercel.app/login" element={<Login />} />
-            <Route element={<ProtectedRoute user={user} redirectTo="https://subregion-webapp-project-77gu-in6o1rupc-diesvas-projects.vercel.app/login" />}>
-            <Route path="https://subregion-webapp-project-77gu-in6o1rupc-diesvas-projects.vercel.app/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route element={<ProtectedRoute user={user} redirectTo="/login" />}>
+            <Route path="/" element={<Home />} />
             </Route>
         </Routes>
     )
