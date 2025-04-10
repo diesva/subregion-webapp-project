@@ -13,4 +13,12 @@ export const useUsuariosStore = create((set, get) => ({
     const datauser = await InsertarUsuarios({idauth: data.user.id, fecharegistro:new Date(), tipouser:"admin",});
     return datauser;
   },
+  idusuario: 0,
+  mostrarUsuarios: async () => {
+    const response = await MostrarUsuarios();
+    set({ idusuario: response.id });
+    return response;
+    
+  },
+ 
 }));
