@@ -2,14 +2,20 @@ import styled from "styled-components";
 import { v } from "../../styles/variables";
 import { CardDatosEmpresa } from "../moleculas/CardDatosEmpresa";
 export function BannerEmpresa(){
-return (<Container>
-    <div className="content-wrapper-context"> </div>
-    <div className="content-text">Alamcen Ilo - Información de datos</div>
-    <ContentCards>
-        <CardDatosEmpresa titulo="Moneda" valor="S/."/>
-        
-        <CardDatosEmpresa titulo="Usuarios" valor="100"/>
-    </ContentCards>
+return (
+  <Container>
+    <div className="content-wrapper-context">
+      <span className="titulo">
+        {<v.iconoempresa />}
+        Nombre de Almacen
+      </span>
+      <div className="content-text">Alamcen Ilo - Información de datos</div>
+      <ContentCards>
+          <CardDatosEmpresa titulo="Moneda" valor="S/."/>
+          
+          <CardDatosEmpresa titulo="Usuarios" valor="100"/>
+      </ContentCards>
+    </div>
     <div className="contentsvg">
         <svg
           class="opacity-0 group-hover:opacity-100 transform-gpu transition-all will-change-auto duration-600 ease-in-out"
@@ -77,28 +83,84 @@ return (<Container>
             <stop offset="1" stop-opacity="0" />
           </radialGradient>
         </defs>
-      </svg>    
-</Container>);
+      </svg>
+    </Container>
+  );
 }
 const Container = styled.div`
-width: 100%;
-height: 100%;
-position: relative;
-display: flex;
-align-items: center;
-justify-content: center;
-border: 0 solid #6b6b6b;
-background-size: contain;
-background-position: center;
-background-repeat: no-repeat, reapeat;
-border-radius: 14px;
-overflow: hidden;
+  width: 100%;
+  height: 100%;
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0 solid #6b6b6b;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat, repeat;
+  border-radius: 14px;
+  overflow: hidden;
+  .cuadros {
+    transition: cubic-bezier(0.4, 0, 0.2, 1) 0.6s;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .contentsvg{
+    transition: cubic-bezier(0.4, 0, 0.2, 1) 0.6s;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: -500px;
+    opacity:0;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
 
+  }
+  &:hover {
+    .cuadros {
+      transform: rotate(37deg) rotateX(5deg) rotateY(12deg) rotate(3deg)
+        skew(2deg) skewY(1deg) scaleX(1.2) scaleY(1.2);
+    }
+    .contentsvg{
+        bottom: -100px;
+        opacity:1;
+    }
+  }
+  .content-wrapper-context{
+    padding: 20px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    .titulo {
+      font-size: 30px;
+      font-weight: 700;
+      gap: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .content-text {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.7em;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+  }
 `;
-const ContentCards=styled.div`
-display: flex;
-gap: 10px;
-padding-top: 15px;
-cursor: pointer;
-
+const ContentCards = styled.div`
+  display: flex;
+  gap: 10px;
+  padding-top: 15px;
+  cursor: pointer;
 `;
